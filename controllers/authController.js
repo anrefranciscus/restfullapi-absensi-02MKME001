@@ -15,10 +15,10 @@ const register = async (req, res) => {
   const { nim, nama } = req.body;
 
   try {
-    const mahasiswa = await registerMahasiswa(nim, nama);
+    const student = await AuthService.register(nim, nama);
     res
       .status(201)
-      .json({ message: "Mahasiswa berhasil terdaftar", mahasiswa });
+      .json({ message: "Mahasiswa berhasil terdaftar", student });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
